@@ -2,10 +2,11 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 import redis
 import time
+import os
 
 app = FastAPI()
 redis_client = redis.Redis(
-    host="localhost",
+    host=os.getenv("REDIS_HOST", "localhost"),
     port=6379,
     decode_responses=True
 )
